@@ -13,7 +13,7 @@ const PostBeneficiaire = require("./src/router/RouterPostBeneficiaire");
 const PostVirement = require("./src/router/RouterPostVirement");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // Mes dependences utiliser
 app.use(cors());
