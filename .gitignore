@@ -1,0 +1,9 @@
+# Fichiers d'environnement
+.env
+*.env
+
+# Dependencies
+node_modules/
+
+# Fichier de clés Firebase
+nouveau-ab5ed-firebase-adminsdk-fbsvc-51f73e614d.json
