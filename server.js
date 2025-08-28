@@ -14,7 +14,13 @@ const port = process.env.PORT || 3000;
 
 app.use(cors());
 app.use(bodyParser.json());
+app.get("/", (req, res) => {
+  res.json({ message: "Backend is running!" });
+});
 
+app.get("/test", (req, res) => {
+  res.json({ status: "OK", message: "API is working" });
+});
 app.get("/TableSolde", GetSolde);
 app.get("/TableHistorique", GetHistorique);
 app.get("/TableBeneficiaire", GetBeneficiaire);
