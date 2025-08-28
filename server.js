@@ -12,7 +12,16 @@ const PostVirement = require("./src/router/RouterPostVirement");
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173", // Pour le dev local
+      "http://localhost:3000", // Pour le dev local alternatif
+      "https://mabank.onrender.com", // Ton frontend sur Vercel
+    ],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
 app.get("/", (req, res) => {
   res.json({ message: "Backend is running!" });
