@@ -69,7 +69,7 @@ const PostVirement = async (req, res) => {
       date: formattedDate,
       nouveauSolde: nouveauSolde,
       Reference: Reference,
-      statut: "Effectuer",
+      statut: "En attente",
     });
 
     // reponse du resultat de la transaction (succès)

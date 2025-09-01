@@ -12,13 +12,22 @@ const PostVirement = require("./src/router/RouterPostVirement");
 const app = express();
 const port = process.env.PORT || 3000;
 
+const allowedOrigins = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  "https://my-espace-account-client.surge.sh", // Ton frontend sur Surge
+];
+
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173", // Pour le dev local
-      "http://localhost:3000", // Pour le dev local alternatif
-      "https://mabank.onrender.com", // Ton frontend sur Vercel
-    ],
+    origin: function (origin, callback) {
+      // Autoriser si pas d'origine (ex: Postman) ou si dans la liste
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
   })
 );
